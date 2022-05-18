@@ -20,7 +20,7 @@ jobs:
           name: extracted-log.log
           path: ./output/uas.log
 
-  test_log: 
+  test_the_log:
     name: Validate the log
     runs-on: ubuntu-latest
     steps:
