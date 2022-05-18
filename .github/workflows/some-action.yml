@@ -32,12 +32,14 @@ jobs:
           repository: alter-dark/custom-action1
           token: ${{ secrets.ACCESS_TOKEN }}
           path: my-tool
+      
+      - run: ls -al my-tool
 
       - name: Retrieve log from artifacts
         uses: actions/download-artifact@v3
         with:
           name: extracted-log.log
 
-      - uses: ./my-tool/custom-action1
+      - uses: ./my-tool
         with:
           uas-log: ./extracted-log.log
