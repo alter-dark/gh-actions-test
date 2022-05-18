@@ -12,13 +12,13 @@ jobs:
         run: |
           chmod +x ./export_uas.sh
           ./export_uas.sh ./testresult.xcresult \
-          [ -d ./output/uas.log ] && echo "Log extracted succesfully"
+          [ -d ./output/uas/uas.log ] && echo "Log extracted succesfully"
 
       - name: Upload log
         uses: actions/upload-artifact@v3
         with:
           name: extracted-log.log
-          path: ./output/uas.log
+          path: ./output/uas/uas.log
 
   log_test:
     name: Validate the log
