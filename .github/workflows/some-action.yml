@@ -35,6 +35,6 @@ jobs:
         with:
           name: extracted-log.log
 
-      - uses: alter-dark/custom-action1@master
+      - uses: ./custom-action1
         with:
           uas-log: ./extracted-log.log
