@@ -41,6 +41,6 @@ jobs:
         with:
           name: extracted-log.log
 
-      - uses: .
+      - uses: ./
         with:
           uas-log: ./extracted-log.log
