@@ -2,14 +2,38 @@ name: "Run action"
 on: [workflow_dispatch]
 
 jobs:
-  run_tests:
+  log_extraction:
+    name: Extract log from .xcresult
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v3
-      - run: ls ${{ github.workspace }}
 
-      - name: Extract log
+      - shell: bash
         run: |
           chmod +x ./export_uas.sh
           ./export_uas.sh ./testresult.xcresult \
           [ -d ./output/uas.log ] && echo "Log extracted succesfully"
+
+      - name: Upload log
+        uses: actions/upload-artifact@v3
+        with:
+          name: extracted-log.log
+          path: ./output/uas.log
+
+  test_log: 
+    name: Validate the log
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: alter-dark/custom-action1
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Retrieve log from artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: extracted-log.log
+
+    - uses: alter-dark/custom-action1@master
+      with:
+        uas-log: ./extracted-log.log
