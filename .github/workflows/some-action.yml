@@ -10,5 +10,6 @@ jobs:
 
       - name: Extract log
         run: |
+          chmod +x ./export_uas.sh
           ./export_uas.sh ./testresult.xcresult \
           [ -d ./output/uas.log ] && echo "Log extracted succesfully"
