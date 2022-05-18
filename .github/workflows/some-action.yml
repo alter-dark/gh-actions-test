@@ -20,7 +20,7 @@ jobs:
           name: extracted-log.log
           path: ./output/uas.log
 
-  test_the_log:
+  log_test:
     name: Validate the log
     runs-on: ubuntu-latest
     steps:
@@ -34,6 +34,6 @@ jobs:
         with:
           name: extracted-log.log
 
-    - uses: alter-dark/custom-action1@master
-      with:
-        uas-log: ./extracted-log.log
+      - uses: alter-dark/custom-action1@master
+        with:
+          uas-log: ./extracted-log.log
