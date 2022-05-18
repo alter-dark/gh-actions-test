@@ -1,5 +1,5 @@
 name: "Run action"
-on: [workflow_dispatch]
+on: [workflow_dispatch, push]
 
 jobs:
   log_extraction:
@@ -33,7 +33,8 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           path: my-tool
       
-      - run: ls -al my-tool
+      - run: npm i
+        working-directory: "my-tool"
 
       - name: Retrieve log from artifacts
         uses: actions/download-artifact@v3
