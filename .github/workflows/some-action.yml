@@ -35,12 +35,14 @@ jobs:
       
       - run: npm i
         # working-directory: "my-tool"
-
+      
       - name: Retrieve log from artifacts
         uses: actions/download-artifact@v3
         with:
           name: extracted-log.log
+      
+      - run: ls -al
 
       - uses: ./
         with:
-          uas-log: ./extracted-log.log
+          uas-log: ./uas.log
