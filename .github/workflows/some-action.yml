@@ -22,6 +22,7 @@ jobs:
 
   log_test:
     name: Validate the log
+    needs: log_extraction
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
