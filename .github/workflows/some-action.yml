@@ -3,13 +3,12 @@ on: [workflow_dispatch]
 
 jobs:
   run_tests:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
-      - name: Checkout local
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - run: ls ${{ github.workspace }}
 
       - name: Extract log
         run: |
-          chmod +x ./export_uas.sh \
-          bash ./export_uas.sh ./testresult.xcresult \
+          ./export_uas.sh ./testresult.xcresult \
           [ -d ./output/uas.log ] && echo "Log extracted succesfully"
