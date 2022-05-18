@@ -1,0 +1,15 @@
+name: "Run action"
+on: [workflow_dispatch]
+
+jobs:
+  run_tests:
+    runs-on: macos-11
+    steps:
+      - name: Checkout local
+        uses: actions/checkout@v3
+
+      - name: Extract log
+        run: |
+          chmod +x ./export_uas.sh \
+          bash ./export_uas.sh ./testresult.xcresult \
+          [ -d ./output/uas.log ] && echo "Log extracted succesfully"
