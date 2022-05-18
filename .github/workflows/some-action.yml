@@ -38,6 +38,6 @@ jobs:
         with:
           name: extracted-log.log
 
-      - uses: my-tool/custom-action1
+      - uses: ./my-tool/custom-action1
         with:
           uas-log: ./extracted-log.log
