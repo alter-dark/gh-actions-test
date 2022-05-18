@@ -26,15 +26,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
         with:
           repository: alter-dark/custom-action1
           token: ${{ secrets.ACCESS_TOKEN }}
+          path: my-tool
 
       - name: Retrieve log from artifacts
         uses: actions/download-artifact@v3
         with:
           name: extracted-log.log
 
-      - uses: ./custom-action1
+      - uses: my-tool/custom-action1
         with:
           uas-log: ./extracted-log.log
